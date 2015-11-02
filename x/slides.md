@@ -1,0 +1,600 @@
+# Slides + script
+
+## Intro
+
+### npm
+
+<npm logo as contents of slide>
+
+JP: NodeFest 2015
+KR: play.node() 2015
+
+### Kat Marchán (1:00)
+
+Hi, everyone! My name Kat Marchán.
+
+// IF JP:
+
+For those of you wondering, I pronounce it based on how I say my last name in
+Spanish, so "maruchan katto".
+
+### まるちゃんキャット？
+
+http://www.theinertia.com/wp-content/uploads/2010/10/maru-cat-barrel-625.jpg
+
+No... not quite this one.
+
+### マルちゃんキャット？
+
+http://blogimg.goo.ne.jp/user_image/49/cb/ee972bdb009f477ae63c1c4ca00c31f3.jpg
+
+Not this one, either.
+
+### マルチャンキャット!
+
+// END IF
+
+// IF KR:
+### Who is this?
+// END IF
+
+
+https://twitter.com/maybekatz/status/644254405718491136
+
+Here we go. This is me! Thank you so much for having me, and thank you very much
+to the organizers for their hard work in putting this together and getting you
+all in here.
+
+I'm an engineer on the npm CLI tool. I take care of bugfixes and new features,
+like the others on my team. I'm also the one who has been responsible for
+maintaining the 2.x branch of npm. And I have been the liaison between my team,
+and the Node Long Term Support Working Group.
+
+And I'm here to talk about... npm! A lot of different stuff about npm!
+
+### What is `npm`? (1:00)
+
+npm is the package manager for Javascript!
+
+npm, as some of you might already know, is a tool included with node
+installations. When you're developing a Javascript application, it's used to
+install and manage packages.
+
+### What is `npm`? (#2)
+
+<image of example packages>
+
+Usually, these are things such as libraries that
+provide some small piece of functionality, frameworks, command-line tools, or
+even resources for your web application.
+
+In the past, npm was mainly used by the node community to manage server-side
+dependencies for their concurrent, high-performance server applications.
+
+These days, npm is used by the entire Javascript community -- including desktop
+application and frontend web developers.
+
+### 200k+! (0:30)
+
+<https://twitter.com/seldo/status/660200314562195456>
+
+npm makes a LOT of code available to the community -- we recently crossed
+200-thousand packages in our registry.
+
+As far as I know, that makes us the single biggest language-specific package
+manager in the world. That's more than all the modules in Perl's CPAN (150k),
+all Ruby Gems (110k), or packages in Python's PyPI (68k).
+
+That's a lot of packages! And a lot of downloads.
+
+### What is npm, Inc? (0:40)
+
+...And behind this huge repository is a company called npm, Inc.
+
+While the npm CLI tool is open source, and the registry is free to use for open
+source projects, the npm registry, its infrastructure, and the website, are also
+managed by my company, in service of the community.
+
+We also have some for-pay products linked to the main registry, like private
+packages, npm On-Site, and organizations, to help grow and sustain the company.
+
+So if someone asks what our business model is?... I guess it's that.
+
+### Who are the CLI Team? (1:30)
+
+That said, I work for the CLI side of the company. While we'll add support for
+new registry features related to the business stuff, our main purpose here is to
+serve the Javascript community and keep y'all happy.
+
+You can think of the CLI team as the open source arm of npm, Inc.
+
+Right now there's three of us on the team:
+
+### Who are the CLI Team? (#2)
+
+<Forrest Norvell (@othiym23) + pony pic>
+
+Forrest is our team lead, product manager, and all-around Big Boss. You may have
+seen his red pony avatar before.
+
+### Who are the CLI Team? (#3)
+
+<Rebecca Turner (@ReBeccaOrg) + ???pic>
+
+Rebecca was responsible for most of the work on npm 3. She's still the main one
+doing the latest 3.x releases -- which became `latest` when it left beta. She's
+also the current architect for the CLI.
+
+### Who are the CLI Team? (#4)
+
+<Kat Marchán (@maybekatz) + Gendo pic>
+
+And that's me -- like I said before, 2.x release manager, LTS liaison, and just
+general dev. I'll be getting more involved with npm@3 stuff now that 2.x is
+mostly focused on important bugfixes.
+
+### Who are the CLI Team? (#5)
+
+<Stephanie Snopek (@StephSnopeks) and Ernie Salazar (@ehsalazar), + Stephanie and Ernie dot png>
+
+Ernie and Stephanie aren't technically part of the CLI team, but they handle
+support for the company. You might see them popping up more in more public
+places, though: they're going to be helping with twitter and github. They are
+both kind, friendly people!
+
+### Talk to us~ (0:30)
+
+<@npmjs, support@npmjs.com, github.com/npm/npm>
+
+We like interacting with the community! If you have issues or questions, feel
+free to talk to us.
+
+### Talk to us~ (#2)
+
+TODO: Are these three cool with me referring them?
+
+<@watilde, @yosuke_furukawa, @Outsideris, TODO: .cn? ???>
+
+If you want to try and talk to folks closer to home, these folks have also been
+involved with talking to us, or they've submitted patches to npm.
+
+Anyway, head on over to the tracker when you've got questions! We'd love to have
+you.
+
+## Now! (time mark: 5:00)
+
+### npm: The shiny new now (0:55)
+
+<big 3>
+
+So, now that we've got introductions out of the way, let's get to the meaty
+stuff.
+
+I'm gonna be talking about some of the recent changes to npm, specially those
+that came along with npm@3.
+
+There's a lot of good stuff in there, and a big part of it is meant to open the
+doors for the future. I'll say more about that later in the talk.
+
+npm@3 was a major change to npm, and was in development for about a year before
+becoming our main release this past summer. The biggest changes had to do with
+installation and the way dependencies are handled.
+
+I'll go through them one by one. Shall we?
+
+### The progress bar (0:35)
+
+<gif of npm@3 scroll bar>
+
+First things first... this thing is probably the first thing any of you would've
+noticed, right? I mean, yeah. It's a scroll bar. It looks nice, and it was a fun
+addition, but I figure it looked like a pretty big change, right?
+
+It's funny because... while we were in beta? This thing here got a lot more
+attention than our other features for a while. Even now, it's one of the first
+things some folks mention to us.
+
+### Flattened tree (2:20)
+
+<left side: npm@2 tree for a project. right side: npm@3 tree for a project>
+
+This is probably the other biggest change you may have noticed: npm installs
+flat trees by default now. This is basically like running `npm dedupe` every
+time you install.
+
+This is a big change! For large projects especially, you'll have a lot less
+nested stuff in your dependency tree. Large dependencies are much more likely to
+get deduped now, which means your installations will be much smaller.
+
+Some Windows users were having problems with really long paths -- this change
+alone may have fixed it for a lot of you, if you ran into the bug.
+
+### Flattened tree (#2)
+
+<left side: deep tree with semver-incompatible deps, right side: tree with a dep
+bubbled up to the top>
+
+The flattening is straightforward: when you do an `npm install`, npm calculates
+the best compatible dependency tree, using semver and picking the latest
+compatible dependencies, bubbling those to the top.
+
+So let's say you have package A, which depends on package C.
+
+You also have package B, which also depends on package C.
+
+When you install, your `node_modules/` will have three packages in its root: A,
+B, and C.
+
+Whereas before, you would have had two copies of C: one in A/node_modules, and
+another in B/node_modules.
+
+Keep in mind, though, the tree isn't guaranteed to be flat. As you see here, if
+two packages depend on different versions and those versions aren't compatible?
+They'll stay nested.
+
+### Flattened tree (#3)
+
+<`require('foo') !== require('foo')`>
+
+This has some important side-effects: You still can't rely on the tree being
+completely flat, and you still can't assume requiring the same name from two
+modules will return the same object.
+
+Yes, flattened trees are a big step towards making frontend developers' lives
+better. They might also help reduce the size of your compiled projects if you're
+using a build tool. But we're not quite there yet. We'll be doing other stuff
+for that.
+
+### peerDependencies (2:11)
+
+<`"peerDependencies": {"grunt-cli": "5.0"}`>
+
+peerDependencies!
+
+This change is a big reason why npm went to 3.0 -- it's a big change
+from how peerDeps used to work.
+
+Maybe you used them before, maybe you didn't... but the most important thing to
+know now is `peerDependencies` doesn't cause anything to get installed anymore.
+It just warns to remind you whether you're missing something, now.
+
+So those of you using grunt or similar? You'll need to add them to your
+`devDependencies` yourself now. And if you're a plugin author? You can't rely on
+`peerDependencies` installing automatically for your users. Just keep that in
+mind.
+
+### peerDependencies (#2)
+
+<`npm install hell`>
+
+The reason for this change is simple: `peerDependencies` introduced dependency
+hell into a tool that was designed from the beginning to avoid it.
+
+The gist of it, and really the issue itself, is that your system shouldn't break
+just because you have two dependencies requiring two different versions of the
+same dependency. This is very important for npm to be able to promise you. It's
+one of the things that really sets it apart from other package managers.
+
+So, it turned out, we allowed that to happen by making `peerDependencies`
+install by default.
+
+With the new method, the feature is still there for the few use cases where
+`peerDependencies` makes sense: things like CLI tools or frameworks with plugin
+architectures, where the main tool is run separately and requires the plugins
+itself.
+
+If you were using `peerDependencies` in order to have have global singletons?
+Just use a global singleton -- peerDeps is not and never was the solution to
+that problem.
+
+### shrinkwrap (3:20)
+
+<shrink wrapping vaccuum.png>
+
+So who here has even heard of `npm shrinkwrap`? Could you raise your hands?
+
+<pause, get a feel for it>
+
+cool. <comment on %>
+
+[most, Some, none, barely any, a few] of you have heard it, maybe used it. For
+those of you who haven't, though: `npm shrinkwrap` lets you generate this
+special file called `shrinkwrap.json` that sort of freezes all your dependencies
+to specific versions -- even specific tarballs in the registry.
+
+Now, semver is super-handy and you should totally use it most of the time.
+
+In some cases, you need to actually lock down your dependencies so that `npm
+install` always does exactly the same thing, even if there's new
+semver-compatible versions.
+
+In those cases, you use `shrinkwrap`.
+
+This has totally been around for a while, too! This is not a new feature in and
+of itself. What npm@3 did was make big changes to the feature to make it
+super-useful in ways it wasn't before.
+
+### shrinkwrap (#2)
+
+<idempotent: adj. - does the same thing when you do it a lot>
+
+It's really important for something like shrinkwrap that you actually get the
+same thing if you run it twice. It doesn't matter if you run it on different
+computers, or if you run it twice in the same one: you should always get the
+same tree, in the end.
+
+This didn't use to be the case with shrinkwrap, though: you would get different
+results between the first and second time you ran it in the same repository.
+That means that if you forgot to run it twice? Or you ran it on someone else's
+computer? It wouldn't do what it was supposed to.
+
+But that's fixed now! As of `npm@3`, you can rely on shrinkwrap to always be
+idempotent. If you run `shrinkwrap` and commit `shrinkwrap.json`, everyone on
+your team will have the exact same installed dependencies next time they `npm
+install`
+
+### shrinkwrap (#3)
+
+<npm install --save
+npm update --save
+npm dedupe --save
+npm uninstall --save>
+
+Another welcome change is that now, if you update your package.json with the
+`--save` flag, it'll automatically update your `shrinkwrap.json`. This means you
+don't need to keep running `npm shrinkwrap` every time! Just use `--save` and
+everything will be just fine.
+
+### shrinkwrap (#4)
+
+< http://www.usshrinkwrapinc.com/IMG00257-20110419-1337.jpg >
+
+So to wrap everything up here: Give shrinkwrap a shot! See if it serves your
+needs. It's definitely a lot nicer than it used to be. There's some other
+bugfixes for it in npm@3, but I think that's about it for shrinkwrap for now.
+
+### phased installation (1:50)
+
+<set phasers to stun! https://southpawbeagle.files.wordpress.com/2010/05/star-trek.jpg?w=500&h=375>
+
+Let's take a step back for a moment. I want to mention one of the biggest
+internal changes to npm.
+
+Part of the big rearchitecting that Rebecca did was rewrite the code behind `npm
+install` to make it happen in individual phases.
+
+In npm@2, the installer would immediately start executing each installation step
+for every package, one after the other. This means that some packages might be
+getting written to their final destination even before some other packages were
+done downloading!
+
+This introduced all sorts of race conditions and strange errors. It also made it
+really hard to fix the installer sometimes.
+
+npm@3 changed that: now, the installer goes through different phases, and waits
+until all packages in one phase are done before moving on to the next step.
+
+You might not notice this, but it's important! It's helped make the installer
+much easier for us to think and talk about. It also helped get rid of some types
+of race conditions. At best, you might notice some of this if you pay close
+enough attention to that shiny new progress bar. Or you might get nicer errors
+that don't necessarily leave you in a mixed-up state, they way they used to.
+
+Also speaking of mixed-up state? The installer is able to fix broken installs
+now -- it crawls through your dependencies and makes sure everything is in its
+proper place. If it's not, it _fixes it on the spot_. Pretty cool, huh?
+
+### version lifecycle scripts (2:00)
+
+```
+"scripts": {
+  "preversion": "npm test"
+}
+```
+
+Shoutout to @watilde-san for this one! Turns out, there's now lifecycle scripts
+associated with `npm version`!
+
+This is actually a pretty neat feature -- it means, for example, that you can
+make your test suite run before you can bump the version on your project! You
+can see an example of that right here.
+
+So if you have that code in your `package.json`, and you run `npm version`, your
+version will only get bumped if `npm test` succeeds. Otherwise, it'll back out
+of the whole thing.
+
+### version lifecyle scripts
+
+```
+  "postversion": "git push --follow-tags && npm publish"
+```
+
+Another idea could be to make your project do a git push and a publish every
+time you successfully upgrade your version.
+
+Lifecycle scripts in general are great! I've seen a lot more people use them on
+their projects, instead of installing all of grunt or gulp for the sake of only
+a couple of small commands. Give it a shot and see how you feel about it!
+
+Don't worry, grunt, gulp, and broccoli are probably not going anywhere: they're
+still great tools for more complex workflows. They might work better than npm
+scripts even for simple things! So I'm not, like, trying to kill those tools,
+here.
+
+### Long Term Support (2:30)
+
+< turtle.png >
+
+Before I move on to future features, I want to take a little time to talk about
+LTS.
+
+So LTS stands for "Long Term Support". A lot of different tools, especially
+operating systems, have something called LTS, or something similar.
+
+The general idea is to maintain a branch that users know they can commit to in
+the long term. This is super-important for things like enterprise, because they
+want to make sure the product they make is built on a platform that will
+continue getting bugfixes and security patches. At the same time, they don't
+want to have to worry about things changing too fast. Unstable APIs.
+
+### Long Term Support (#2)
+
+<https://entwickler.de/wp-content/uploads/2015/10/schedule.png>
+
+In order to better serve this crowd, the Node Foundation set up a plan for
+releasing and maintaining LTS releases. So now, whenever an LTS version is
+released, it's guaranteed to be maintained for 30 whole months!
+
+Regular stable releases still happen between every LTS release, but they're
+maintained for a much shorter period.
+
+What does this mean for npm users?
+
+Well, we don't have our own LTS process. We're independent of node, but we're
+also willing to help with its LTS efforts.
+
+For this reason, we committed to ongoing support for the `2.x` branch of npm.
+This means we'll keep landing security and other important patches into that
+branch for as long as the node LTS is going on.
+
+So people first installing node? they'll be getting 2.x for anything below
+`node@5`. This includes the official LTS release, `node@4.2`. It also means node
+0.12. Soon, 0.10 will also be upgraded from npm 1.x to 2.x.
+
+In fact, 0.10 should start warning about the upcoming upgrade soon.
+
+Basically, don't use npm 1.x. We really don't want to deal with it.
+
+## Later! (time mark: 21:00)
+
+### Into the future! (0:40)
+
+< https://davidsgoals.files.wordpress.com/2014/07/ii__1362656850_back-to-the-future-car.gif
+
+https://github.com/npm/npm/wiki/Roadmap>
+
+LTS is a pretty good note to end that section of the talk, before we move on to
+some other exciting stuff: the future of npm.
+
+Turns out we have a pretty long roadmap ahead of us, and there's a ton of good
+stuff in there. I'm going to focus on what I think the most exciting bits are.
+If you want more details, go to this URL up here.
+
+Forrest puts a lot of work into keeping it up to date with important stuff. It's
+also really well organized, and has pretty much what our plans are for the
+coming year or so.
+
+### Frontend module support
+
+<???>
+
+Of all the things on the roadmap, I think the one I'm most excited about is this
+one: better frontend support.
+
+Now, we're still working on the design and details, but this is a top priority
+for the coming year.
+
+I talked earlier about how npm@3 is a great step towards supporting this. At the
+same time, it's not enough: a lot of frontend modules expect to be globally
+unique. On top of that, there's resources that don't include any javascript at
+all -- things like templates, CSS, or even plain static resources like images
+and other files.
+
+### Frontend module support (#2)
+
+<Choose your own adventure>
+
+To support this, our current plan is to create a new directory, something other
+than `node_modules`. We'll add an extra step to the npm lifecycle for a new type
+of dependency: `browserDependencies`. These will have special semantics because
+they'll be copied over from `node_modules` in such a way that they will end up
+flat, or the process will fail.
+
+Should a conflict arise where modules can't be flattened, we'll give users the
+ability to pick which version will "win", and the other version will be ignored.
+Unlike something like bower, though, this choice will be immediately recorded in
+`package.json`, so the rest of the team doesn't run into the conflict, too.
+
+The end result of all this will be a single directory with only flattened
+modules. You would then be able to refer to the files in it directly, without
+any ambiguity about where they will be located.
+
+### Frontend module support (#3)
+
+<???>
+
+There's more to be done! This plan isn't anywhere near final. The thing we
+actually implement may, in fact, be very very different from what I just
+described. Keep an eye out in the coming year for news. If you have thoughts
+about this in particular, please find me. I'd love to hear them.
+
+### Orgs
+
+<teens and orcs - http:/info.npmjs.com/test-orgs>
+
+Soon, npm is releasing one of its newest products: Orgs.
+
+You can think of Orgs as something between private modules and npm Onsite. The
+general idea is that you can create an "Org" user. This user, unlike regular
+users, is able to manage entire teams of people, and grant them read and write
+access to its packages.
+
+This is great for small companies and organizations that need a bit more
+functionality than what private modules provide, but aren't quite ready for
+something as heavy as Onsite. You can think of them as similar to Github orgs,
+except they won't be available for open source projects for the time being.
+
+The feature is already implemented in the CLI. It's also in beta! If you're
+interested in trying it out and helping us test during out beta, check out the
+link on the slide.
+
+### Better Windows Support
+
+We're not very satisfied with the user experience on Windows, and we'd really
+love to make it so much better. Improving that experience, and doing things that
+cater more to our large and growing base of Windows user, is super-important to
+us.
+
+Turns out about 40% of our users actually install from Windows machines. They're
+really nothing to scoff at!
+
+A large part of our efforts at better Windows support right now turns out to be
+just general bugfixing for platform-specific bugs. We'd like to do more, though:
+better installers, more reliable upgrades, helping users with path issues. Even
+possibly creating a Windows-specific GUI wrapper around npm are all things we're
+doing or considering doing.
+
+This particular change will most likely not come overnight: We're putting a lot
+of effort soon into making sure we get our test suite passing on Windows, just
+to start. Once at that place, we'll be able to go on with more complex tasks.
+
+And like I said before about frontend -- if you're a Windows user using node and
+npm a lot, talk to me about it! We want to get a wide-enough perspective that we
+can reasonably serve as many folks as possible.
+
+### es6 modules
+
+So maybe some of you have heard of the new EcmaScript standards -- ES6, ES2015,
+and such?
+
+Covered in those standards is a new module system with interesting static
+semantics.
+
+We're very interested in seeing the new module system develop, and we want to do
+our best to support the community in adopting it and migrating over.
+
+Unfortunately, it's still too early for us to act: the module loader isn't
+standardised yet. Understanding how installation and loading should work for a
+system like this is critically important for us. Without that, we can only sit
+and wait, and continue paying attention to the conversation.
+
+Someday, though, we'll have full-fledged ES6 modules!
+
+### World domination
+
+<wombat pile.png>
+
+The pretty much wraps it up.
+
+npm is a super-exciting tool to be working on. I'm going to sleep now. Thank you
+very much.

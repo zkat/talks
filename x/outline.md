@@ -20,11 +20,13 @@ Also the npm liaison to the Node LTS WG.
 The package manager for javascript!
 
 If you have ever used node, it's the CLI tool included with your installation.
-It is used to install dependencies when developing new JavaScript libraries and
+It is used to install dependencies when developing JavaScript libraries and
 applications.
 
 Did you know there's 200k+ modules now?
 https://twitter.com/seldo/status/660200314562195456
+
+npm is the biggest language-specific package manager in the world.
 
 ### What is npm, Inc?
 
@@ -43,9 +45,30 @@ of npm. This of it as "npm OSS".
 * Rebecca Turner (@ReBeccaOrg) - 3.x release manager and lead npm@3 developer
 * Kat Marchán (@maybekatz) - 2.x release manager, LTS liaison, general dev
 
+It's our job to make sure the CLI is serving the needs of our users, open source
+or not.
+
+Community is very important to us, and we do our best to make ourselves
+accessible. We do our best to respond to people who come to us through our issue
+tracker, twitter, support@npmjs.com, and even conferences like this one. We want
+you to know that we're here, and we listen, even if we can't implement your
+favorite feature.
+
+We also have a dedicated support team which is increasing their involvement with
+community things:
+
+* Ernie Salazar (@ehsalazar)
+* Stephanie Snopek (@StephSnopeks)
+
+You may see them more on the issue tracker. They are also the main ones in
+charge of support@npmjs.com. They are kind, friendly people!
+
 ### Liaisons to the npm .jp and .kr communities (.cn?)
 
 @watilde, @yosuke_furukawa, @Outsideris
+
+TODO: mention the .cn folks? Who are they? Should I mention everyone in both
+talks, or tailor it per country?
 
 ### Welcome to the tracker!
 
