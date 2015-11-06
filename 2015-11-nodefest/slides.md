@@ -8,6 +8,8 @@
 
 NodeFest 2015
 
+Get the slides! bit.ly/1kfRYSy
+
 Thank you so much for having me, and thank you very much to the organizers for their hard work in putting this together and getting you all in here.
 
 This entire talk is available at the URL on this slide. There's a complete transcript in English, if you want to follow along with what I'm saying. I hope it helps.
@@ -133,26 +135,21 @@ seen his red pony avatar before.
 
 <Rebecca Turner (@ReBeccaOrg) + ???pic>
 
-Rebecca was responsible for most of the work on npm 3. She's still the main one
-doing the latest 3.x releases -- which became `latest` when it left beta. She's
-also the current architect for the CLI.
+Rebecca is our architect, and she was responsible for most of the work on npm 3. She's still the main one doing the latest 3.x releases.
 
 ### Who are the CLI Team? (#4)
 
 <Kat Marchán (@maybekatz) + Gendo pic>
 
-And that's me -- like I said before, 2.x release manager, LTS liaison, and just
-general dev. I'll be getting more involved with npm@3 stuff now that 2.x is
-mostly focused on important bugfixes.
+And that's me -- like I said before, 2.x release manager, LTS liaison, and just general dev.
 
 ### Who are the CLI Team? (#5)
 
 <Stephanie Snopek (@StephSnopeks) and Ernie Salazar (@ehsalazar), + Stephanie and Ernie dot png>
 
-Ernie and Stephanie aren't technically part of the CLI team, but they handle
-support for the company. You might see them popping up more in more public
-places, though: they're going to be helping with twitter and github. They are
-both kind, friendly people!
+There's two more folks I want to give a shout-out to: npm's support team isn't technically part of the CLI team, but they've been working on helping us, and you might see them pop up on twitter and github more. They're also the ones that respond if you email support@npmjs.com
+
+They're lovely people and we all appreciate them a lot!
 
 ### Talk to us~ (0:30)
 
@@ -206,13 +203,55 @@ It's funny because... while we were in beta? This thing here got a lot more
 attention than our other features for a while. Even now, it's one of the first
 things some folks mention to us.
 
+This is a feature users have been requesting for a very long time. So when Isaac, our CEO, first started working on the CLI? Someone filed an issue asking for a nice scrollbar.
+
+Isaac was like “pshaw, should be easy enough”.
+
+And well, we didn’t actually get one until Rebecca added it in npm@3.
+
+### A note on semver
+
+So before I keep going, let me take a step back and talk for a moment about semver. How many of you know what semver is? (raise hand)
+
+So semver stands for Semantic Versioning. It's a method of figuring out what version numbers to use that tries to apply meaning to the actual numbers, rather than arbitrarily increasing them according to some vague rules.
+
+The basic idea is that you have three main components of a version for your package: Major, Minor, and Patch.
+
+### semver major
+
+<v*1*.2.3>
+
+Semver says major versions are defined as backwards-incompatible breaking changes. So, if your new release breaks any of your user's code, no matter how small the change is, it needs to be a major release.
+
+### semver minor
+
+<v1.*2*.3>
+Minor releases are defined as adding new features without breaking old ones: So if you just add a new function to your API? That's a minor release.
+
+### semver patch
+
+<v1.2.*3*>
+
+Finally, there's patch releases, which are anything that modifies existing functionality in a backwards-compatible way, without adding anything new. Patch releases tend to be things like bugfixes, tweaks to the documentation, configuration changes for your build, etcetera.
+
+### semver all the things
+
+<semver.org/lang/ja>
+
+There's a bit more to it than that, but the bits here are all we'll need for this talk.
+
+Why does this all matter? Because npm relies on you using semver correctly when you publish your packages. You can read the whole semver spec over at semver.org.
+
 ### Flattened tree (2:20)
 
-<left side: npm@2 tree for a project. right side: npm@3 tree for a project>
+<npm dedupes by default now>
+
+Now that we're primed on semver stuff, let's talk about a big usecase for it, and one of the bigger features of npm@3: Flattened installs!
 
 This is probably the other biggest change you may have noticed: npm installs
-flat trees by default now. This is basically like running `npm dedupe` every
-time you install.
+flat trees by default now.
+
+This is basically like running `npm dedupe` every time you install.
 
 This is a big change! For large projects especially, you'll have a lot less
 nested stuff in your dependency tree. Large dependencies are much more likely to
@@ -223,22 +262,27 @@ alone may have fixed it for a lot of you, if you ran into the bug.
 
 ### Flattened tree (#2)
 
-<left side: deep tree with semver-incompatible deps, right side: tree with a dep
-bubbled up to the top>
+<image of npm@2 tree>
 
-The flattening is straightforward: when you do an `npm install`, npm calculates
-the best compatible dependency tree, using semver and picking the latest
-compatible dependencies, bubbling those to the top.
+So this is what your installs look like on npm@2: If you had multiple modules depending on the same package, you would just get duplicate installations inside the tree.
 
-So let's say you have package A, which depends on package C.
+This is very important, because it prevents dependency hell, which is when you have multiple packages depending on incompatible versions. So if your library required a module, you would always get the one you declared in your package.json.
 
-You also have package B, which also depends on package C.
+### Flattened tree (#3)
 
-When you install, your `node_modules/` will have three packages in its root: A,
-B, and C.
+<image of npm@3 tree>
 
-Whereas before, you would have had two copies of C: one in A/node_modules, and
-another in B/node_modules.
+npm@3 changed the way this happened: We *still* guarantee that your dependencies will all be semver-compatible, but now we look at your dependency tree and see if we can bubble the duplicates up to the top.
+
+So as you can see, we went from the deeply nested one...
+
+### Flattened tree (#4)
+
+Where we had multiple copies of A and B deep in the tree...
+
+### Flattened tree (#5)
+
+To a deduped one where we only have a single copy of the compatible dependencies. You'll notice the other package, I'll call it C, has two different incompatible versions? That's all we actually need to nest.
 
 Keep in mind, though, the tree isn't guaranteed to be flat. As you see here, if
 two packages depend on different versions and those versions aren't compatible?
@@ -261,10 +305,7 @@ for that.
 
 <`"peerDependencies": {"grunt-cli": "5.0"}`>
 
-peerDependencies!
-
-This change is a big reason why npm went to 3.0 -- it's a big change
-from how peerDeps used to work.
+The other breaking change in npm@3 was one we did for peerDependencies! It's actually a small but significant change in how peerDeps used to work.
 
 Maybe you used them before, maybe you didn't... but the most important thing to
 know now is `peerDependencies` doesn't cause anything to get installed anymore.
@@ -299,7 +340,9 @@ If you were using `peerDependencies` in order to have have global singletons?
 Just use a global singleton -- peerDeps is not and never was the solution to
 that problem.
 
-NOTE: More detail!
+For those of you who don’t know what that singleton word means: It’s when you have a single, global instance of an object that needs to be unique across your application. It’s a common pattern, and it really is useful sometimes, but this is now how you should do them in npm.
+
+So the long and the short of it is: npm wasn't doing its job, and we believe we've fixed it now. Sorry for the inconvenience.
 
 ### shrinkwrap (3:20)
 
@@ -363,7 +406,7 @@ everything will be just fine.
 
 < http://www.usshrinkwrapinc.com/IMG00257-20110419-1337.jpg >
 
-So to wrap everything up here: Give shrinkwrap a shot! See if it serves your
+So to _wrap_ everything up here: Give shrinkwrap a shot! See if it serves your
 needs. It's definitely a lot nicer than it used to be. There's some other
 bugfixes for it in npm@3, but I think that's about it for shrinkwrap for now.
 
@@ -437,7 +480,7 @@ here.
 
 ### Long Term Support (2:30)
 
-< turtle.png >
+<pyramids.png>
 
 Before I move on to future features, I want to take a little time to talk about
 LTS.
