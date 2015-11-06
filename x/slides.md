@@ -6,14 +6,15 @@
 
 <npm logo as contents of slide>
 
-JP: NodeFest 2015
-KR: play.node() 2015
+NodeFest 2015
+
+Thank you so much for having me, and thank you very much to the organizers for their hard work in putting this together and getting you all in here.
+
+This entire talk is available at the URL on this slide. There's a complete transcript in English, if you want to follow along with what I'm saying. I hope it helps.
 
 ### Kat Marchán (1:00)
 
 Hi, everyone! My name Kat Marchán.
-
-// IF JP:
 
 For those of you wondering, I pronounce it based on how I say my last name in
 Spanish, so "maruchan katto".
@@ -32,41 +33,44 @@ Not this one, either.
 
 ### マルチャンキャット!
 
-// END IF
-
-// IF KR:
-### Who is this?
-// END IF
-
-
 https://twitter.com/maybekatz/status/644254405718491136
 
-Here we go. This is me! Thank you so much for having me, and thank you very much
-to the organizers for their hard work in putting this together and getting you
-all in here.
+Here we go. This is me!
 
-I'm an engineer on the npm CLI tool. I take care of bugfixes and new features,
-like the others on my team. I'm also the one who has been responsible for
-maintaining the 2.x branch of npm. And I have been the liaison between my team,
-and the Node Long Term Support Working Group.
+I'm an engineer on the npm CLI tool.
 
-And I'm here to talk about... npm! A lot of different stuff about npm!
+I take care of bugfixes and new features. I'm also the one maintaining the 2.x branch of npm.
+
+I also represent my team on the Node Long Term Support Working Group.
 
 ### What is `npm`? (1:00)
+And I'm here to talk about... well, npm! A lot of different stuff about npm!
 
-npm is the package manager for Javascript!
-
-npm, as some of you might already know, is a tool included with node
-installations. When you're developing a Javascript application, it's used to
-install and manage packages.
+By the way, there's npm stickers lying around. Please, help yourselves!
 
 ### What is `npm`? (#2)
 
+well, npm! A lot of different stuff about npm!
+
+By the way, there's npm stickers lying around. Please, help yourselves!
+
+### What is `npm`? (#3)
+
+<img: this thing!>
+
+npm, as some of you might already know, is a tool included with node
+installations.
+
+When you're developing a Javascript application, it's used to install and manage
+packages. So we call it the package manager for Javascript.
+
+### What is `npm`? (#3)
+
 <image of example packages>
 
-Usually, these are things such as libraries that
-provide some small piece of functionality, frameworks, command-line tools, or
-even resources for your web application.
+So, usually, npm packages are things such as libraries that provide some small
+piece of functionality, frameworks, command-line tools, or even resources for
+your web application.
 
 In the past, npm was mainly used by the node community to manage server-side
 dependencies for their concurrent, high-performance server applications.
@@ -85,11 +89,17 @@ As far as I know, that makes us the single biggest language-specific package
 manager in the world. That's more than all the modules in Perl's CPAN (150k),
 all Ruby Gems (110k), or packages in Python's PyPI (68k).
 
-That's a lot of packages! And a lot of downloads.
+That's a lot of packages!
+
+### Lots of downloads!
+
+...And a lot of downloads.
+
+You can probably imagine the sort of load this would put on servers, and how available the service would need to be.
 
 ### What is npm, Inc? (0:40)
 
-...And behind this huge repository is a company called npm, Inc.
+Which is basically where npm, Inc comes in.
 
 While the npm CLI tool is open source, and the registry is free to use for open
 source projects, the npm registry, its infrastructure, and the website, are also
@@ -102,13 +112,15 @@ So if someone asks what our business model is?... I guess it's that.
 
 ### Who are the CLI Team? (1:30)
 
-That said, I work for the CLI side of the company. While we'll add support for
-new registry features related to the business stuff, our main purpose here is to
-serve the Javascript community and keep y'all happy.
+The CLI team is an interesting little corner of the company -- npm seems like a
+regular old startup, for the most part, and then there's us.
 
-You can think of the CLI team as the open source arm of npm, Inc.
+You can think of us as the open source branch of npm, Inc: While we'll add
+support for new registry features related to the business stuff, our main
+purpose here is to serve the Javascript community and keep y'all happy.
 
-Right now there's three of us on the team:
+We're a small team, too! While the whole of npm is a small company of about 26
+people, only 3 of us are actually on the CLI team itself:
 
 ### Who are the CLI Team? (#2)
 
@@ -286,6 +298,8 @@ itself.
 If you were using `peerDependencies` in order to have have global singletons?
 Just use a global singleton -- peerDeps is not and never was the solution to
 that problem.
+
+NOTE: More detail!
 
 ### shrinkwrap (3:20)
 
@@ -555,7 +569,7 @@ love to make it so much better. Improving that experience, and doing things that
 cater more to our large and growing base of Windows user, is super-important to
 us.
 
-Turns out about 40% of our users actually install from Windows machines. They're
+Turns out about 42% of our users actually install from Windows machines. They're
 really nothing to scoff at!
 
 A large part of our efforts at better Windows support right now turns out to be

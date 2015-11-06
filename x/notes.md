@@ -44,3 +44,25 @@
 * Callbacks (references to prior information) is ok, but should happen
 * Very rare that good talk is first draft
 * Keep in mind that everyone is gonna be ESL + limited attention span
+
+### Notes
+
+* We've wanted a progress bar for a long time (cute story)
+* Explain what a singleton is in more detail
+* We made a mistake calling it orgs - organizations!
+* WELL ACTUALLY - it's not free for open source yet
+* Font size on code samples was tiny
+* Even extremely complicated technical terms tend to be fine: colloquialism is what I should stay away from.
+
+* Laurie has diagrams about the module loader!
+* didn't describe semver -- a quick primer on semver would be good
+* ditto singletons
+* said ECMAscript without saying what it is (or what es2015 is)
+* Don't use "heavy" for onsite - just say "it's self-hosted"
+* not "org user" -- there is simply an org
+* Try to make things more conversational like they got later
+
+* Make a note about how I'll talk about 2.x
+* The beginning should be tightened up a bit
+
+* Stop banging the table
