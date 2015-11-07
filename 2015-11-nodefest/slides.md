@@ -623,21 +623,18 @@ can reasonably serve as many folks as possible.
 
 ### es6 modules
 
-So maybe some of you have heard of the new EcmaScript standards -- ES6, ES2015,
-and such?
+So the standards committee is working on a new module system for Javascript.
 
-Covered in those standards is a new module system with interesting static
-semantics.
+Covered in those standards is a new module system with interesting static semantics.
 
-We're very interested in seeing the new module system develop, and we want to do
-our best to support the community in adopting it and migrating over.
+Officially, npm considers the es6 efforts to be the future of module system for the Javascript world.
 
-Unfortunately, it's still too early for us to act: the module loader isn't
-standardised yet. Understanding how installation and loading should work for a
-system like this is critically important for us. Without that, we can only sit
-and wait, and continue paying attention to the conversation.
+We're very interested in seeing this new module system develop, and we want to do our best to support the community in adopting it and migrating over.
 
-Someday, though, we'll have full-fledged ES6 modules!
+Unfortunately, it's still too early for us to act: the module loader isn’t standardised yet. Understanding how installation and loading should work for a system like this is critically important for us. Without that, we can only sit and wait, and continue paying attention to the conversation.
+
+Someday, though, we’re sure we'll have full-fledged ES6 modules, whatever those end up looking like.
+
 
 ### World domination
 
