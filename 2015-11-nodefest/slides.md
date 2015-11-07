@@ -533,6 +533,8 @@ https://github.com/npm/npm/wiki/Roadmap>
 LTS is a pretty good note to end that section of the talk, before we move on to
 some other exciting stuff: the future of npm.
 
+### Roadmap!
+
 Turns out we have a pretty long roadmap ahead of us, and there's a ton of good
 stuff in there. I'm going to focus on what I think the most exciting bits are.
 If you want more details, go to this URL up here.
@@ -621,6 +623,7 @@ better installers, more reliable upgrades, helping users with path issues. Even
 possibly creating a Windows-specific GUI wrapper around npm are all things we're
 doing or considering doing.
 
+### Windows Support
 This particular change will most likely not come overnight: We're putting a lot
 of effort soon into making sure we get our test suite passing on Windows, just
 to start. Once at that place, we'll be able to go on with more complex tasks.
@@ -651,7 +654,4 @@ Someday, though, we'll have full-fledged ES6 modules!
 
 <wombat pile.png>
 
-The pretty much wraps it up.
-
-npm is a super-exciting tool to be working on. I'm going to sleep now. Thank you
-very much.
+That's it! it's an exciting time to be working on this stuff. I look forward to where things move in the future, and I hope you all enjoy using this tool that I have the privilege to work on. <bow>
