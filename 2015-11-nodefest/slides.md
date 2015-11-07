@@ -284,10 +284,6 @@ Where we had multiple copies of A and B deep in the tree...
 
 To a deduped one where we only have a single copy of the compatible dependencies. You'll notice the other package, I'll call it C, has two different incompatible versions? That's all we actually need to nest.
 
-Keep in mind, though, the tree isn't guaranteed to be flat. As you see here, if
-two packages depend on different versions and those versions aren't compatible?
-They'll stay nested.
-
 ### Flattened tree (#3)
 
 <`require('foo') !== require('foo')`>
@@ -587,25 +583,18 @@ actually implement may, in fact, be very very different from what I just
 described. Keep an eye out in the coming year for news. If you have thoughts
 about this in particular, please find me. I'd love to hear them.
 
-### Orgs
+### Organizations
 
 <teens and orcs - http:/info.npmjs.com/test-orgs>
+Soon, npm is releasing one of its newest products: Organizations.
 
-Soon, npm is releasing one of its newest products: Orgs.
+You can think of organizations as something between private modules and npm Onsite. The general idea is that you can create an organization on the registry. Organizations, unlike regular users, is able to manage entire teams of people, and grant them read and write access to its packages.
 
-You can think of Orgs as something between private modules and npm Onsite. The
-general idea is that you can create an "Org" user. This user, unlike regular
-users, is able to manage entire teams of people, and grant them read and write
-access to its packages.
+This is great for small companies and organizations that need a bit more functionality than what private modules provide, but aren't quite ready for something self-hosted like Onsite: we still host Organization packages for you on the main registry. Private or otherwise.
 
-This is great for small companies and organizations that need a bit more
-functionality than what private modules provide, but aren't quite ready for
-something as heavy as Onsite. You can think of them as similar to Github orgs,
-except they won't be available for open source projects for the time being.
+### Join the beta!
 
-The feature is already implemented in the CLI. It's also in beta! If you're
-interested in trying it out and helping us test during out beta, check out the
-link on the slide.
+The feature is already implemented in the CLI. It's also in beta! If you’re interested in trying it out and helping us test during out beta, check out the link on the slide.
 
 ### Better Windows Support
 
