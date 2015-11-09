@@ -8,7 +8,7 @@
 
 play.node() 2015
 
-Get the slides! https://github.com/zkat/talks/blob/master/2015-11-play.node
+Get the slides! npm install @zkat/play.node-2015
 
 Thank you so much for having me, and thank you very much to the organizers for their hard work in putting this together and getting you all in here.
 
