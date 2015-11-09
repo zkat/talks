@@ -193,17 +193,17 @@ I'll go through them one by one. Shall we?
 
 ### The progress bar (0:35)
 
-<gif of npm@3 scroll bar>
+<gif of npm@3 progress bar>
 
 First things first... this thing is probably the first thing any of you would've
-noticed, right? I mean, yeah. It's a scroll bar. It looks nice, and it was a fun
+noticed, right? I mean, yeah. It's a progress bar. It looks nice, and it was a fun
 addition, but I figure it looked like a pretty big change, right?
 
 It's funny because... while we were in beta? This thing here got a lot more
 attention than our other features for a while. Even now, it's one of the first
 things some folks mention to us.
 
-This is a feature users have been requesting for a very long time. So when Isaac, our CEO, first started working on the CLI? Someone filed an issue asking for a nice scrollbar.
+This is a feature users have been requesting for a very long time. So when Isaac, our CEO, first started working on the CLI? Someone filed an issue asking for a nice progress bar.
 
 Isaac was like “pshaw, should be easy enough”.
 
