@@ -1,0 +1,24 @@
+{
+  "name": "@zkat/wafflejs-03-2016",
+  "version": "1.0.0",
+  "description": "WaffleJS March 2016 presentation slides -- Parser Combinators",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "slides.md",
+    "slides.key"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkat/talks.git"
+  },
+  "author": "Kat Marchán <kzm@sykosomatic.org>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/zkat/talks/issues"
+  },
+  "homepage": "https://github.com/zkat/talks#readme"
+}
