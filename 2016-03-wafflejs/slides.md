@@ -488,3 +488,8 @@ There you Have it, that's All. As I Promised Before,
 
 So next Time you need Things, just use Functions from Strings
 To Lists of Pairs of Things and Strings.
+
+## Credits
+
+Base tutorial: https://github.com/drewc/smug/blob/master/doc/tutorial.org
+Original Rhyme: http://www.willamette.edu/~fruehr/haskell/seuss.html
