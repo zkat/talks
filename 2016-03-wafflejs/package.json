@@ -1,6 +1,6 @@
 {
   "name": "@zkat/wafflejs-03-2016",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "WaffleJS March 2016 presentation slides -- Parser Combinators",
   "main": "index.js",
   "files": [
