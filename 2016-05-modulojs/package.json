@@ -1,0 +1,29 @@
+{
+  "name": "@zkat/modulojs-05-2016",
+  "version": "1.0.0",
+  "description": "Charla con #PROTIPS de npm para Módulo.js en el Distrito Federal",
+  "main": "index.js",
+  "files": [
+    "slides.md",
+    "slides.key"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkat/talks.git"
+  },
+  "author": "Kat Marchán <kzm@sykosomatic.org>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/zkat/talks/issues"
+  },
+  "homepage": "https://github.com/zkat/talks#readme",
+  "dependencies": {
+    "abbrev": "^1.0.7",
+    "npm": "^3.8.8"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
