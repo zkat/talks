@@ -1,5 +1,5 @@
 {
-  "name": "@zkat/modulojs-05-2016",
+  "name": "@zkat/modulojs-2016",
   "version": "1.0.0",
   "description": "Charla con #PROTIPS de npm para Módulo.js en el Distrito Federal",
   "main": "index.js",
@@ -24,6 +24,8 @@
     "abbrev": "^1.0.7",
     "npm": "^3.8.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
   "keywords": []
 }
