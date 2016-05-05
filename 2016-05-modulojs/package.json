@@ -20,12 +20,14 @@
     "url": "https://github.com/zkat/talks/issues"
   },
   "homepage": "https://github.com/zkat/talks#readme",
-  "dependencies": {
-    "abbrev": "^1.0.7",
+  "keywords": [],
+  "devDependencies": {
     "npm": "^3.8.8"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1"
+  "dependencies": {
+    "oso": "^1.0.0"
   },
-  "keywords": []
+  "bundledDependencies": [
+    "oso"
+  ]
 }
