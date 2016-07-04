@@ -1,0 +1,11 @@
+{
+  "name": "@zkat/modulojs-2016",
+  "version": "1.0.0",
+  "dependencies": {
+    "oso": {
+      "version": "1.0.0",
+      "from": "oso@*",
+      "resolved": "https://registry.npmjs.org/oso/-/oso-1.0.0.tgz"
+    }
+  }
+}
