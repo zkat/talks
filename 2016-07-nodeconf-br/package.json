@@ -1,0 +1,33 @@
+{
+  "name": "@zkat/nodeconf-br-2016",
+  "version": "1.0.0",
+  "description": "Talk for the first nodeconf in Brazil",
+  "main": "index.js",
+  "files": [
+    "slides.md",
+    "slides.key"
+  ],
+  "scripts": {
+    "test": "echo 'Running tests...'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkat/talks.git"
+  },
+  "author": "Kat Marchán <kzm@sykosomatic.org>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/zkat/talks/issues"
+  },
+  "homepage": "https://github.com/zkat/talks#readme",
+  "keywords": [],
+  "devDependencies": {
+    "npm": "^3.8.8"
+  },
+  "dependencies": {
+    "oso": "^1.0.0"
+  },
+  "bundledDependencies": [
+    "oso"
+  ]
+}
