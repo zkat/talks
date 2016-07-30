@@ -1,0 +1,12 @@
+{
+  "name": "@zkat/npmcamp-2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Kat Marchán <kzm@sykosomatic.org>",
+  "license": "CC0-1.0"
+}
