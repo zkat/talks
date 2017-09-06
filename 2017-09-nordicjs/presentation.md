@@ -6,7 +6,7 @@
 
 ---
 
-## **Prototype**-based Object-Oriented Programming
+## **Prototype**-based Object-Oriented **Pro**gramming
 
 ### (Prototype **OOP**)
 
@@ -539,53 +539,6 @@ The audience cheers for you! clap clap!                 <-- Wow ilu all 😭💚
 ^ Seriously check it out and play around a bit. You can use this command -right now- to log in and start exploring, if you want.
 
 ^ TIMING: 4.3min
-
----
-
-## Newton**Script** (1993)
-
-### Prices for **RAM** are too damn high
-
-^ Fast forward a few years, and now we've got a little language called NewtonScript. It was a language built specifically for Apple's line of Newton mobile devices. These were basically precursors to the iPhone.
-
----
-
-![fit](apple-newton-and-iphone.jpg)
-
-### **HUEG** 😱
-
-^ And pretty much like you'd expect from something from the 90s, they were pretty huge by modern standards, too, except maybe when compared to some Androids.
-
----
-
-## **Embedded** Prototypes
-
-- Apple **Newton** Devices
-- 640KB **RAM** total (128KB for OS)
-- much cheaper 4MB **ROM**
-- **Self** VM started at **32MB**
-
-![right](apple-newton.jpg)
-
-^ The time frame also meant that it had incredibly constrained resources by modern standards. The whole device had a measly 640KB of RAM, which isn't even enough for your average gif these days. RAM was pretty expensive back then, and sucked up power.
-
-^ ROM, on the other hand, was much cheaper and smaller: so a MessagePad has like 4MB of ROM. That's read-only memory.
-
-^ So the newton devs wanted to have a nice high-level language for writing apps for this, but to give you an idea, the Self VM sucked up a whole 32MB when it first launched. They needed something that was both easy to write, and that could make the most of the limited resources.
-
----
-
-## **Delegation** to save RAM
-
-![fit, inline](newton-inheritance.gif)
-
-^ This is where NewtonScript came in. What it did was that it put all the system's core prototypes and their related data in ROM, since they didn't really need to change. That means you could then create much smaller clones from these prototypes that lived in ROM and use most of their properties through delegation. Then the tiny RAM space was only used for the values you actually changed.
-
-^ This worked out pretty well, and I think it's such a neat little example of how to take advantage of delegation -- doing this sort of work in a class-based or raw C system would've involved a lot more manual nudging around. But instead, they used this little language and the memory savings just happened from there.
-
-^ Sadly, the Newton project was eventually cancelled in 1998, and with it went this neat little language. 14 years after the initial Newton release, Apple would release the iPhone. But by then, it was a bit cheaper to have more than 640KB of RAM, so NewtonScript wasn't really needed anymore...
-
-^ TIMING: 2min
 
 ---
 
