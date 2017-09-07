@@ -14,7 +14,8 @@
 
 ^ Y'all are at a JavaScript conference, so I'm sure at least some of you have heard this term before. Others might be familiar with people talking about just "OOP", or "Object-Orientation".
 
-^ But what *is* this whole prototype thing? Since there's probably more people used to class-based languages, I'll explain it in terms of that...
+^ But what *is* this whole prototype thing? Well, ince there's probably more people used to class-based languages, I'll explain it in terms of that...
+
 
 ---
 
@@ -105,6 +106,13 @@ console.log(dogen.breed) // prints: 'unknown'
 ## **prototype**-based language
 
 ^ Why am I talking about this? Because JavaScript is very much a prototype-based language. Anything we do with objects with JavaScript always goes back to the behavior of its prototypes.
+
+
+---
+
+![fit](horsejs.png)
+
+^ horse_js is also pretty excited about this. There's a reason JS is pretty great.
 
 ---
 
@@ -671,7 +679,7 @@ The audience cheers for you! clap clap!                 <-- Wow ilu all 😭💚
 
 ^ That also means continuing all the development going on with browsers' devtools. These are really great descendants to the development tooling that Self pioneered. With ES modules' new live binding exports, there's a whole world of interactive dev that we still haven't quite explored.
 
-^ Finally, I think the work that's been going on with web components for the past few years is fantastic. Web Components are basically a way to clone and customize actual DOM elements, meaning you can play with your app right in the devtools html inspector. I think that's probably kinda controversial, but I totally think that, based on everything I've talked about, Web Components are the most natural evolution of the web platform. I think they're going to make the web a lot more accessible to new developers, and they're going to open doors we still can't quite imagine. I don't know if you can tell, but I'm kinda a fangirl about this.
+^ Finally, I think the work that's been going on with web components for the past few years is fantastic. Web Components are basically a way to clone and customize actual DOM elements, meaning you can play with your app right in the devtools html inspector. I think that's probably kinda controversial, but I totally think that, based on everything I've talked about, Web Components are the most natural evolution of the web platform. I think they're going to make the web a lot more accessible to new developers, and they're going to open doors we still can't quite imagine. React components are pretty close to this, too, and Mars' talk about how to build them is coming up after the break. I'm really looking forward to it.
 
 ---
 
@@ -694,19 +702,20 @@ The audience cheers for you! clap clap!                 <-- Wow ilu all 😭💚
 
 # get **fancy** sometimes!
 
-- **FRP** with **Rx**.js / **Bacon**.js 🥓
+- **FRP** with **Rx**.js 💊 / **Bacon**.js 🥓
 - Learn to love **`Object.create()`** 🤓
 - Compile-to-JS lets us **Explore** 🎮
+- Use Webpack **anyway**
 
 ![right](elm.png)
 
 ^ Now, not to contradict myself, but I swear it's still fine to get fancy sometimes. Experimenting with new things is how we bring our platform forward.
 
-^ There's some exciting stuff on this front: FRP, Functional Reactive Programming, is a pretty neat tool that's been gaining popularity over the past couple of years. For example, stuff like rx.js, which you should check out.
+^ There's some exciting stuff on this front: FRP, Functional Reactive Programming, is a pretty neat tool that's been gaining popularity over the past couple of years. For example, stuff like rx.js, which David is gonna give you a talk about tomorrow!
 
 ^ Give raw `Object.create()` some love, too. I know we're all very excited that we have actual class syntax in JavaScript now, but remember that you've still got a prototype language under the hood. Go ahead and push boundaries and see what you can do when you go beyond highly-organized class definitions.
 
-^ There's a lot of Compile-to-JS languages these days, too. Since you pretty much need to use JavaScript itself on browsers, and everyone wants to write web apps. ClojureScript, Elm, TypeScript. These are all really neat, and you'll learn a lot just from playing with them. I look forward to seeing what kind of stuff we integrate into JS itself after experimenting with these.
+^ There's a lot of Compile-to-JS languages these days, too. Since you pretty much need to use JavaScript itself on browsers, and everyone wants to write web apps. ClojureScript, Elm, TypeScript. These are all really neat, and you'll learn a lot just from playing with them. I look forward to seeing what kind of stuff we integrate into JS itself after experimenting with these. If you're curious about Elm, by the way, Tereza's giving one about that tomorrow, too.
 
 ---
 
