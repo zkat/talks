@@ -128,6 +128,7 @@ npm@5 | 27.97s | 19.5s
 
 ^ Estas librerías son todas bien rápidas, están bien probadas individualmente, y lo más importante es que se pueden usar separadas de npm para hacer cosas no-triviales.
 
+---
 
 # modular npm
 
@@ -147,10 +148,6 @@ npm@5 | 27.97s | 19.5s
 ^ Pues bien. Vamos a discutir ahora un poquito sobre la -teoría- de gestionadores de paquetes. O como quieras llamarla. Quiero distinguir aquí entre dos acercamientos a la gestion: la sincronización funcional, y la mutación	de datos.
 
 ---
-
-^ This way to think about it is something npm has generally been moving towards, specially since npm@3, or even npm@2, but what really helped the idea gel and made it easier to target was this wonderful article by Sam Boyer -- one of the designers for Go's new package manager, called dep.
-
-^ It's a fantastic overview of package management as a problem, the different solutions that have been tried, their individual limitations, and so on and so forth. That's mostly just good info to have if you want to understand this sort of stuff better, but the real juicy thing about this article was when he started talking about what a future package manager might look like. In npm terms, the team talks about the differences he lays out as "mutation" vs "syncing".
 
 ## "So You Wanna Write a Package Manager"[^2]
 
@@ -174,6 +171,7 @@ npm@5 | 27.97s | 19.5s
 ^ No voy a hablar demasiado de esto, pero hay cositas por ahí que te dan una pista de lo que estoy hablando: como funcionan los enlaces de disco, que npm no añada dependencias a tu package.json por defecto, los problemas que causó npm@3 cuando empezó a aplanar las dependencias.
 
 ^ Esta forma de pensar hizo mucho sentido cuando los proyectos eran más pequeños, y cuando la mayoría de los usuarios de npm eran autores de librerías que estaban jugando con Node.js y querían mucho control manual para sus experimentos. En aquel entonces, hubiera sido muy malo que npm tuviera muchas opiniones, o que se apoderara de tu `node_modules/` y no te dejara hacer maromas. Pero eso ha cambiado mucho...
+
 
 ---
 
@@ -410,3 +408,5 @@ npm@5 | 27.97s | 19.5s
 ### npm i -g npm@latest
 
 ### Visiten 📦 package.community 👀
+
+^ Gracias a los organizadores, etc, que hayan disfrutado, etc
