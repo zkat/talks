@@ -1,3 +1,4 @@
+footer: Tink: A next-gen PM | Kat Marchán | 🐦@maybekatz
 # tink
 
 ### a **next-generation** package manager for **javascript**
@@ -433,6 +434,8 @@
 
 ### `$ tink unwind`
 
+^ But what if you want to have an actual `node_modules/` anyway?
+
 ^ In this case there's a nice command called `unwind` that will actually do a full extraction into `node_modules`, so you can use your editor, non-JS build tools, and pretty much anything in the usual way. This is basically an npm install, but there's a slight difference that I'll go into next.
 
 ^ Time: 20s
@@ -602,6 +605,6 @@
 ### Join us!
 
 * npm.community/c/development
-* github.com/npm/rfcs
+* github.com/npm/tink
 * **@maybekatz** on Twitter
 * **@zkat** on Github
