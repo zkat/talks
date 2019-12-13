@@ -22,7 +22,7 @@
   "homepage": "https://github.com/zkat/talks#readme",
   "keywords": [],
   "devDependencies": {
-    "npm": "^3.8.8"
+    "npm": "^6.13.4"
   },
   "dependencies": {
     "oso": "^1.0.0"
